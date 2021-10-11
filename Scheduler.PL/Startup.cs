@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Scheduler.BLL;
 using Scheduler.DAL;
 
 namespace Scheduler.PL
@@ -30,6 +31,7 @@ namespace Scheduler.PL
         {
             services.AddControllers();
             services.AddDbServices(Configuration.GetConnectionString("Default"), "Scheduler.DAL");
+            services.AddBLLServices();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Scheduler.PL", Version = "v1"});

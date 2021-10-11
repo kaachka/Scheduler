@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Scheduler.BLL.Interfaces;
+using Scheduler.BLL.DTO;
 
 namespace Scheduler.PL.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -18,22 +20,33 @@ namespace Scheduler.PL.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        private readonly IEventService _eventService;
+        private readonly IUserService _userService;
+
+
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IEventService eventService, IUserService userService)
         {
             _logger = logger;
+            _eventService = eventService;
+            _userService = userService;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<IEnumerable<EventDTO>> Get(DateTime dateTime)
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-                {
-                    Date = DateTime.Now.AddDays(index),
-                    TemperatureC = rng.Next(-20, 55),
-                    Summary = Summaries[rng.Next(Summaries.Length)]
-                })
-                .ToArray();
+            return await _eventService.GetEvents(dateTime);
+        }
+
+        [HttpGet]
+        public void CreateUser(string login, string email)
+        {
+            _userService.CreateUser(login, email);
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<UserDTO>> GetAllUsers()
+        {
+            return await _userService.GetUsers();
         }
     }
 }

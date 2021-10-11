@@ -18,7 +18,6 @@ namespace Scheduler.DAL.DataBase
         
         public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
         {
-            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,25 +33,25 @@ namespace Scheduler.DAL.DataBase
             modelBuilder.ApplyConfiguration(new ScheduleConfigurations());
 
             modelBuilder.Entity<EventTag>().HasData(
-                new EventTag() {Id = 1, Tag = "Робота"},
-                new EventTag() {Id = 2, Tag = "Сім’я"},
-                new EventTag() {Id = 3, Tag = "Навчання"},
-                new EventTag() {Id = 4, Tag = "Відпочинок"}
+                new EventTag() {Id = 1, Tag = "Work"},
+                new EventTag() {Id = 2, Tag = "Family"},
+                new EventTag() {Id = 3, Tag = "Study"},
+                new EventTag() {Id = 4, Tag = "Vacation"}
             );
             
             modelBuilder.Entity<PriorityTag>().HasData(
-                new PriorityTag() {Id = 1, Tag = "Важливо"},
-                new PriorityTag() {Id = 2, Tag = "Некритично"},
-                new PriorityTag() {Id = 3, Tag = "Середній пріоритет"},
-                new PriorityTag() {Id = 4, Tag = "В процесі"}
+                new PriorityTag() {Id = 1, Tag = "Important"},
+                new PriorityTag() {Id = 2, Tag = "Not important" },
+                new PriorityTag() {Id = 3, Tag = "Medium priority" },
+                new PriorityTag() {Id = 4, Tag = "In process" }
             );
             
             modelBuilder.Entity<RepeatType>().HasData(
-                new RepeatType() {Id = 1, Type = "Один раз"},
-                new RepeatType() {Id = 2, Type = "Щодня"},
-                new RepeatType() {Id = 3, Type = "Щотижня"},
-                new RepeatType() {Id = 4, Type = "Щомісяця"},
-                new RepeatType() {Id = 5, Type = "Щороку"}
+                new RepeatType() {Id = 1, Type = "Once"},
+                new RepeatType() {Id = 2, Type = "Daily" },
+                new RepeatType() {Id = 3, Type = "Weekly" },
+                new RepeatType() {Id = 4, Type = "Monthly" },
+                new RepeatType() {Id = 5, Type = "Yearly"}
             );
         }
     }

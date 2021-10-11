@@ -10,7 +10,7 @@ using Scheduler.DAL.DataBase;
 namespace Scheduler.DAL.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20211006002338_InitialCreate")]
+    [Migration("20211010225914_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

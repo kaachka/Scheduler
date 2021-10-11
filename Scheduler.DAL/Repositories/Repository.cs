@@ -19,9 +19,9 @@ namespace Scheduler.DAL.Repositories
             _entities = Context.Set<TEntity>();
         }
         
-        public void Create(TEntity entity)
+        public async Task Create(TEntity entity)
         {
-            _entities.Add(entity);
+            await _entities.AddAsync(entity);
         }
 
         public void Update(TEntity entity)
@@ -42,9 +42,14 @@ namespace Scheduler.DAL.Repositories
             return await _entities.FindAsync(id);
         }
 
-        public async  Task<IEnumerable<TEntity>> GetAll(Expression<Func<TEntity, bool>> predicate)
+        public async Task<IEnumerable<TEntity>> FindAll(Expression<Func<TEntity, bool>> predicate)
         {
             return await _entities.Where(predicate).ToListAsync();
+        }
+
+        public async Task<IEnumerable<TEntity>> GetAll()
+        {
+            return await _entities.ToListAsync();
         }
     }
 }
