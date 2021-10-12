@@ -8,6 +8,9 @@ namespace Scheduler.DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            builder.HasAlternateKey(u => u.Login);
+            builder.HasAlternateKey(u => u.Email);
+            
             builder.Property(p => p.Login).IsRequired().HasMaxLength(64);
             builder.Property(p => p.Email).IsRequired().HasMaxLength(64);
         }

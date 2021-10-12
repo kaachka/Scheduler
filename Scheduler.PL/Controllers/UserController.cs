@@ -20,11 +20,10 @@ namespace Scheduler.PL.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
-        public IActionResult CreateUser(string login, string email)
+        [HttpPost]
+        public async Task CreateUser(string login, string email)
         {
-            _userService.CreateUser(login, email);
-            return Ok();
+            await _userService.CreateUser(login, email);
         }
 
         [HttpGet]

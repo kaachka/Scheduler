@@ -9,9 +9,9 @@ namespace Scheduler.DAL.Repositories
     {
         private readonly DataBaseContext _context;
         
-        public UserRepository(DbContext context) : base(context)
+        public UserRepository(DataBaseContext context) : base(context)
         {
-            _context = Context as DataBaseContext;
+            _context = context;
         }
     }
 }
