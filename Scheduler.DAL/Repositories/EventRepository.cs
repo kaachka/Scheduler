@@ -30,12 +30,7 @@ namespace Scheduler.DAL.Repositories
 
         public async Task<IEnumerable<Event>> GetEventsByTag(int tagId)
         {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<Event>> GetEventsByUser(int userId)
-        {
-            throw new NotImplementedException();
+            return await FindAll(p => p.EventTagId == tagId);
         }
     }
 }

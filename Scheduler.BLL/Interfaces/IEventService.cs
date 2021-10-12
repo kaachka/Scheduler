@@ -12,6 +12,8 @@ namespace Scheduler.BLL.Interfaces
 {
     public interface IEventService
     {
-        Task<IEnumerable<EventDTO>> GetEvents(DateTime dateTime);
+        Task<IEnumerable<EventDTO>> GetEventsByDate(DateTime dateTime);
+        Task<IEnumerable<EventDTO>> GetEventsByProirity(int priorityId);
+        Task<IEnumerable<EventDTO>> GetEventsByTag(int tagId);
     }
 }
