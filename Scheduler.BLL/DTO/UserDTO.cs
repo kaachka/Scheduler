@@ -11,8 +11,5 @@ namespace Scheduler.BLL.DTO
         public int Id { get; set; }
         public string Login { get; set; }
         public string Email { get; set; }
-
-        //public List<EventDTO> Events { get; set; }
-        //public List<ScheduleDTO> Schedules { get; set; }
     }
 }

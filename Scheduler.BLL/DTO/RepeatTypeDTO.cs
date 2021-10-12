@@ -10,7 +10,5 @@ namespace Scheduler.BLL.DTO
     {
         public int Id { get; set; }
         public string Type { get; set; }
-
-        public List<EventDTO> Events { get; set; }
     }
 }

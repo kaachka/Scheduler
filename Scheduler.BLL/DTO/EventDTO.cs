@@ -25,7 +25,5 @@ namespace Scheduler.BLL.DTO
 
         public UserDTO Owner { get; set; }
         public int OwnerId { get; set; }
-
-        public List<ScheduleDTO> Schedules { get; set; }
     }
 }

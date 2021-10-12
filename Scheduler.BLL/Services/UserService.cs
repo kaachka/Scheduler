@@ -26,8 +26,8 @@ namespace Scheduler.BLL.Services
 
         public async Task CreateUser(string login, string email)
         {
-            //if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(email))
-            //    return;
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(email))
+                return;
             var user = new User() {Login = login, Email = email};
             await _userRepository.Create(user);
             await _unitOfWork.SaveAsync();
@@ -36,6 +36,22 @@ namespace Scheduler.BLL.Services
         public async Task<IEnumerable<UserDTO>> GetUsers()
         {
             return _mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(await _userRepository.GetAll());      
+        }
+
+        public async Task<UserDTO> GetUserByLogin(string login)
+        {
+            if (string.IsNullOrEmpty(login))
+                return null;
+
+            return _mapper.Map<User, UserDTO>(await _userRepository.GetByLogin(login));
+        }
+
+        public async Task<UserDTO> GetUserByEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+                return null;
+
+            return _mapper.Map<User, UserDTO>(await _userRepository.GetByEmail(email));
         }
     }
 }

@@ -11,7 +11,5 @@ namespace Scheduler.BLL.DTO
         public int Id { get; set; }
         public DateTime StartRemind { get; set; }
         public DateTime EndRemind { get; set; }
-
-        public List<EventDTO> Events { get; set; }
     }
 }

@@ -31,5 +31,17 @@ namespace Scheduler.PL.Controllers
         {
             return await _userService.GetUsers();
         }
+
+        [HttpGet]
+        public async Task<UserDTO> GetUserByLogin(string login)
+        {
+            return await _userService.GetUserByLogin(login);
+        }
+
+        [HttpGet]
+        public async Task<UserDTO> GetUserByEmail(string email)
+        {
+            return await _userService.GetUserByEmail(email);
+        }
     }
 }
