@@ -14,16 +14,15 @@ namespace Scheduler.DAL.Repositories
 
         public ScheduleRepository(DbContext context) : base(context)
         {
-            _context = Context as DataBaseContext;
+            _context = _context as DataBaseContext;
         }
 
-        public async Task<IEnumerable<Schedule>> GetEventsByUser(int id)
-        {
-            var events = (from schedule in _context.Schedules.Include(s => s.Event)
-                          where schedule.UserId == id
-                          select schedule).ToListAsync();
-
-            return await events;
+        public async Task<IEnumerable<Event>> GetEventsByUser(int id)
+        { 
+            return await _context.Events
+                .Include(e => e.EventTag).Include(e => e.PriorityTag)
+                .Include(e => e.RepeatType).Include(e => e.Reminder)
+                .Include(e => e.Owner).ToListAsync();
         }
     }
 }

@@ -9,6 +9,8 @@ namespace Scheduler.BLL.Interfaces
 {
     public interface IScheduleService
     {
-        Task<IEnumerable<ScheduleDTO>> GetEventsByUser(int id);
+        Task Add(int userId, int eventId);
+
+        Task<IEnumerable<EventDTO>> GetEventsByUser(int id);
     }
 }

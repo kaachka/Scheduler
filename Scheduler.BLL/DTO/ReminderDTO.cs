@@ -8,7 +8,6 @@ namespace Scheduler.BLL.DTO
 {
     public class ReminderDTO
     {
-        public int Id { get; set; }
         public DateTime StartRemind { get; set; }
         public DateTime EndRemind { get; set; }
     }

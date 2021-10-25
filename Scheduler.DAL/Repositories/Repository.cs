@@ -10,13 +10,13 @@ namespace Scheduler.DAL.Repositories
 {
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly DbContext Context;
+        private readonly DbContext _context;
         private readonly DbSet<TEntity> _entities;
         
         public Repository(DbContext context)
         {
-            Context = context;
-            _entities = Context.Set<TEntity>();
+            _context = context;
+            _entities = _context.Set<TEntity>();
         }
         
         public async Task Create(TEntity entity)

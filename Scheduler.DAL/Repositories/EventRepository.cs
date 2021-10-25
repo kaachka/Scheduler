@@ -15,7 +15,7 @@ namespace Scheduler.DAL.Repositories
 
         public EventRepository(DbContext context) : base(context)
         {
-            _context = Context as DataBaseContext;
+            _context = _context as DataBaseContext;
         }
 
         public async Task<IEnumerable<Event>> GetEventsByDate(DateTime date)

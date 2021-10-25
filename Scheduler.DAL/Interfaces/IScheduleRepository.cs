@@ -9,6 +9,6 @@ namespace Scheduler.DAL.Interfaces
 {
     public interface IScheduleRepository : IRepository<Schedule>
     {
-        Task<IEnumerable<Schedule>> GetEventsByUser(int id);
+        Task<IEnumerable<Event>> GetEventsByUser(int id);
     }
 }

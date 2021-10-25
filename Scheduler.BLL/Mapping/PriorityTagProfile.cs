@@ -8,7 +8,7 @@ namespace Scheduler.BLL.Mapping
     {
         public PriorityTagProfile()
         {
-            CreateMap<PriorityTag, PriorityTagDTO>().ReverseMap();
+            CreateMap<PriorityTag, PriorityTagDTO>().ForMember(dto => dto.Tag, map => map.MapFrom(src => src.Tag));
         }
     }
 }

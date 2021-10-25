@@ -33,6 +33,12 @@ namespace Scheduler.PL.Controllers
         }
 
         [HttpGet]
+        public async Task<UserDTO> GetUserById(int id)
+        {
+            return await _userService.GetUserById(id);
+        }
+
+        [HttpGet]
         public async Task<UserDTO> GetUserByLogin(string login)
         {
             return await _userService.GetUserByLogin(login);

@@ -21,6 +21,12 @@ namespace Scheduler.PL.Controllers
         }
 
         [HttpGet]
+        public async Task<EventDTO> GetEventsById(int id)
+        {
+            return await _eventService.GetEventById(id);
+        }
+
+        [HttpGet]
         public async Task<IEnumerable<EventDTO>> GetEventsByTag(int tagId)
         {
             return await _eventService.GetEventsByTag(tagId);
@@ -36,6 +42,12 @@ namespace Scheduler.PL.Controllers
         public async Task<IEnumerable<EventDTO>> GetEventsByDate(DateTime date)
         {
             return await _eventService.GetEventsByDate(date);
+        }
+
+        [HttpPost]
+        public async Task Create(EventDTO eventDTO)
+        {
+            await _eventService.CreateEvent(eventDTO);
         }
     }
 }

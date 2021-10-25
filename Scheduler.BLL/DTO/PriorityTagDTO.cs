@@ -8,7 +8,6 @@ namespace Scheduler.BLL.DTO
 {
     public class PriorityTagDTO
     {
-        public int Id { get; set; }
         public string Tag { get; set; }
     }
 }

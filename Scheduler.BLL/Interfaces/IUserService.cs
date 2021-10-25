@@ -9,6 +9,7 @@ namespace Scheduler.BLL.Interfaces
         Task CreateUser(string login, string email);
 
         Task<IEnumerable<UserDTO>> GetUsers();
+        Task<UserDTO> GetUserById(int id);
         Task<UserDTO> GetUserByLogin(string login);
         Task<UserDTO> GetUserByEmail(string email);
     }

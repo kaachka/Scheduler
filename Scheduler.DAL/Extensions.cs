@@ -19,6 +19,8 @@ namespace Scheduler.DAL
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IEventRepository, EventRepository>();
+            services.AddScoped<IScheduleRepository, ScheduleRepository>();
+            services.AddScoped<IReminderRepository, ReminderRepository>();
         }
     }
 }

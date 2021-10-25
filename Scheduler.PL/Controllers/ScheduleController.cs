@@ -20,8 +20,15 @@ namespace Scheduler.PL.Controllers
             _scheduleService = scheduleService;
         }
 
+        [HttpPost]
+        public async Task Add(int userId, int eventId)
+        {
+            await _scheduleService.Add(userId, eventId);
+        }
+
+
         [HttpGet]
-        public async Task<IEnumerable<ScheduleDTO>> GetEventsByUser(int userId)
+        public async Task<IEnumerable<EventDTO>> GetEventsByUser(int userId)
         {
             return await _scheduleService.GetEventsByUser(userId);
         }

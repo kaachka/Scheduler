@@ -8,7 +8,7 @@ namespace Scheduler.BLL.Mapping
     {
         public RepeatTypeProfile()
         {
-            CreateMap<RepeatType, RepeatTypeDTO>().ReverseMap();
+            CreateMap<RepeatType, RepeatTypeDTO>().ForMember(dto => dto.Type, map => map.MapFrom(src => src.Type));
         }
     }
 }

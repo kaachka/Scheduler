@@ -14,14 +14,12 @@ namespace Scheduler.BLL.Services
         private readonly IUserRepository _userRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly DataBaseContext context;
 
-        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, IMapper mapper, DataBaseContext context)
+        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
             _userRepository = userRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-            this.context = context;
         }
 
         public async Task CreateUser(string login, string email)
@@ -31,6 +29,11 @@ namespace Scheduler.BLL.Services
             var user = new User() {Login = login, Email = email};
             await _userRepository.Create(user);
             await _unitOfWork.SaveAsync();
+        }
+
+        public async Task<UserDTO> GetUserById(int id)
+        {
+            return _mapper.Map<User, UserDTO>(await _userRepository.Get(id));
         }
 
         public async Task<IEnumerable<UserDTO>> GetUsers()

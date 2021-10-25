@@ -8,7 +8,7 @@ namespace Scheduler.BLL.Mapping
     {
         public EventTagProfile()
         {
-            CreateMap<EventTag, EventTagDTO>().ReverseMap();
+            CreateMap<EventTag, EventTagDTO>().ForMember(dto => dto.Tag, map => map.MapFrom(src => src.Tag));
         }
     }
 }

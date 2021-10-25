@@ -16,6 +16,8 @@ namespace Scheduler.BLL
         {
             service.AddScoped<IEventService, EventService>();
             service.AddScoped<IUserService, UserService>();
+            service.AddScoped<IScheduleService, ScheduleService>();
+            service.AddScoped<IReminderService, ReminderService>();
             service.AddAutoMapper(Assembly.GetExecutingAssembly());
         }
     }

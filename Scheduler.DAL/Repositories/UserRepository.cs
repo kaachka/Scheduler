@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Scheduler.DAL.Repositories
 {
-    public class UserRepository : Repository<User>, IUserRepository
+    public class UserRepository : Repository<User>, IUserRepository 
     {
         private readonly DataBaseContext _context;
         

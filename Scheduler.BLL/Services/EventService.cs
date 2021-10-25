@@ -24,6 +24,19 @@ namespace Scheduler.BLL.Services
             _mapper = mapper;
         }
 
+        public async Task CreateEvent(EventDTO eventDTO)
+        {
+            var newEvent = _mapper.Map<EventDTO, Event>(eventDTO);
+
+            await _eventRepository.Create(newEvent);
+            await _unitOfWork.SaveAsync();
+        }
+
+        public async Task<EventDTO> GetEventById(int id)
+        {
+            return _mapper.Map<Event, EventDTO>(await _eventRepository.Get(id));
+        }
+
         public async Task<IEnumerable<EventDTO>> GetEventsByDate(DateTime dateTime)
         {
             return _mapper.Map<IEnumerable<Event>, IEnumerable<EventDTO>>(await _eventRepository.GetEventsByDate(dateTime));
